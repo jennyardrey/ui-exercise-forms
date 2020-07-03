@@ -36,7 +36,7 @@ The ticket reads as follows:
 > https://projects.invisionapp.com/share/9WXTESN3RN5
 
 ## Exercise Notes
-- Fork this repository (https://github.com/Space48/ui-exercise-forms) to your own Github account
+- Fork this repository (https://github.com/Space48/ui-exercise-forms) to your own Github account and make it private
 - Implement your changes on your own local branch
 - Push that local branch to your fork
 - Open a pull request to master on your fork
