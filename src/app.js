@@ -1,9 +1,12 @@
+import Axios from "axios";
 import React, { useState } from "react";
 import "./app.css";
 
 const App = () => {
   const [values, setValues] = useState({
     email: "",
+    success: false,
+    error: false,
   });
 
   const handleChange = (e) => {
@@ -11,12 +14,25 @@ const App = () => {
     setValues((values) => ({
       email: e.target.value,
     }));
-    console.log(values);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("It has submitted");
+    Axios.post("http://localhost:3005/customer/account/resetPassword", {
+      email: values.email,
+    })
+      .then(function (res) {
+        console.log(res);
+        setValues((values) => ({
+          success: true,
+        }));
+      })
+      .catch(function (err) {
+        console.log(err);
+        setValues((values) => ({
+          error: true,
+        }));
+      });
   };
   return (
     <div className="reset-form">
@@ -26,6 +42,17 @@ const App = () => {
       </p>
 
       <form className="form" onSubmit={handleSubmit}>
+        {!values.error === true ? null : (
+          <div className="error-message">
+            Sorry, there is no account attached to that email address
+          </div>
+        )}
+        {!values.success === true ? null : (
+          <div className="success-message">
+            Success, we have emailed your password reset link
+          </div>
+        )}
+
         <label className="form-item">Email Address</label>
         <input
           className="form-item"
