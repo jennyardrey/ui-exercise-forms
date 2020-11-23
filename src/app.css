@@ -41,6 +41,7 @@
   padding: 10px 40px 10px 40px;
   border: none;
   font-size: 13px;
+  cursor: pointer;
 }
 a {
   color: #3973a5;
